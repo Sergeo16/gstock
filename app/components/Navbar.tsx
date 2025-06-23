@@ -32,7 +32,8 @@ const Navbar = () => {
         <>
             {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href
-                const activeClass = isActive ? 'btn-primary' : 'btn-ghost'
+                const activeClass = isActive ? 'text-accent' : 'btn-ghost'
+                // const activeClass = isActive ? 'btn-accent text-white' : 'btn-ghost'
                 return (
                     <Link
                         href={href}
@@ -59,10 +60,12 @@ const Navbar = () => {
             <div className='flex justify-between items-center'>
                 <div className='flex items-center'>
                     <div className='p-2'>
-                        <Gem className='w-6 h-6 text-primary' />
+                        <Gem className='w-6 h-6 text-accent' />
                     </div>
-                    <span className='font-bold  text-xl'>
-                        SSGstock
+                    <span className='font-bold text-xl'>
+                        SS
+                        <span className='text-accent'>Gstock</span>
+                        
                     </span>
                 </div>
 
