@@ -131,7 +131,7 @@ const page = () => {
                     <input
                         type="text"
                         placeholder='Rechercher un produit...'
-                        className='input input-bordered w-full mb-4'
+                        className='input input-bordered mb-4 focus:border-none focus:outline-accent w-full'
                         value={searchQuery}
                         onChange={(e) => setSearchQuery(e.target.value)}
                     />
@@ -207,7 +207,7 @@ const page = () => {
                             </table>
                             <button
                                 onClick={handleSubmit}
-                                className='btn btn-primary mt-4 w-fit '
+                                className='btn bg-stone text-accent border-accent border-2 hover:border-3 mt-4 w-fit '
                             >
                                 Confirmer le Don
                             </button>

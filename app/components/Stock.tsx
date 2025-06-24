@@ -81,7 +81,7 @@ const Stock = () => {
                         <label className='block' >Sélectionner un produit</label>
                         <select
                             value={selectedProductId}
-                            className='select select-bordered w-full'
+                            className='select select-bordered focus:border-none focus:outline-accent w-full'
                             required
                             onChange={(e) => handleProductChange(e.target.value)}
                         >
@@ -108,10 +108,10 @@ const Stock = () => {
                             value={quantity}
                             required
                             onChange={(e) => setQuantity(Number(e.target.value))}
-                            className='input input-bordered w-full'
+                            className='input input-bordered focus:border-none focus:outline-accent w-full'
 
                         />
-                        <button type="submit" className='btn btn-primary w-fit'>
+                        <button type="submit" className='btn bg-stone text-accent border-accent border-2 hover:border-3'>
                             Ajouter au stock
                         </button>
 

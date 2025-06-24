@@ -11,7 +11,7 @@ const EmptyState: FC<EmptyStateProps> = ({ IconComponent, message }) => {
     return (
         <div className='w-full h-full my-20 flex justify-center items-center flex-col'>
             <div className='wiggle-animation'>
-                <SelectedIcon strokeWidth={1} className='w-30 h-30 text-primary' />
+                <SelectedIcon strokeWidth={1} className='w-30 h-30 text-accent' />
             </div>
             <p className='text-sm'>{message}</p>
         </div>

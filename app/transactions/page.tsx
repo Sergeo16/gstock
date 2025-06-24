@@ -71,7 +71,7 @@ const page = () => {
                 <div className='flex md:justify-between w-full mb-4 space-x-2 md:space-x-0'>
                     <div>
                         <select
-                            className='select select-bordered md:w-64'
+                            className='select select-bordered md:w-64 focus:border-none focus:outline-accent w-full'
                             value={selectedProduct?.id || ""}
                             onChange={(e) => {
                                 const product = products.find((p) => p.id === e.target.value) || null
@@ -91,7 +91,7 @@ const page = () => {
                         <input
                             type="text"
                             placeholder='Date de Début'
-                            className='input input-bordered'
+                            className='input input-bordered focus:border-none focus:outline-accent w-full'
                             value={dateFrom}
                             onFocus={(e) => e.target.type = "date"}
                             onBlur={(e) => {
@@ -104,7 +104,7 @@ const page = () => {
                         <input
                             type="text"
                             placeholder='Date de Fin'
-                            className='input input-bordered'
+                            className='input input-bordered focus:border-none focus:outline-accent w-full'
                             value={dateTo}
                             onFocus={(e) => e.target.type = "date"}
                             onBlur={(e) => {
@@ -115,7 +115,7 @@ const page = () => {
                         />
 
                         <button
-                            className='btn btn-primary'
+                            className='btn btn-accent'
                             onClick={() => {
                                 setSelectedProduct(null)
                                 setDateTo("")

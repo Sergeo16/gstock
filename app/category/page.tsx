@@ -91,7 +91,7 @@ const page = () => {
 
       <div>
         <div className='mb-4'>
-          <button className='btn btn-primary'
+          <button className='btn bg-stone text-accent border-accent border-2 hover:border-3'
             onClick={openCreateModal}
           >
             Ajouter une catégorie
@@ -108,7 +108,7 @@ const page = () => {
                   <div className='text-sm'>{category.description}</div>
                 </div>
                 <div className='flex gap-2'>
-                  <button className='btn btn-sm' onClick={() => openEditModal(category)}>
+                  <button className='btn btn-sm btn-accent' onClick={() => openEditModal(category)}>
                     <Pencil className='w-4 h-4' />
                   </button>
                   <button className='btn btn-sm btn-error' onClick={() => handleDeleteCategory(category.id)}>

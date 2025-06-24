@@ -7,7 +7,7 @@ import { deleteProduct, readProducts } from '../actions'
 import EmptyState from '../components/EmptyState'
 import ProductImage from '../components/ProductImage'
 import Link from 'next/link'
-import { Trash } from 'lucide-react'
+import { Pencil, Trash } from 'lucide-react'
 import { toast } from 'react-toastify'
 
 const page = () => {
@@ -113,10 +113,10 @@ const page = () => {
                                         {product.categoryName}
                                     </td>
                                     <td className='flex gap-2 flex-col'>
-                                        <Link className='btn btn-xs w-fit btn-primary' href={`/update-product/${product.id}`}>
-                                            Modifier
+                                        <Link className='btn btn-xs w-fit btn-accent' href={`/update-product/${product.id}`}>
+                                            <Pencil className='w-4 h-4'/>
                                         </Link>
-                                        <button className='btn btn-xs w-fit' onClick={() => handleDeleteProduct(product)}>
+                                        <button className='btn btn-xs w-fit btn-error' onClick={() => handleDeleteProduct(product)}>
                                             <Trash className='w-4 h-4' />
                                         </button>
                                     </td>

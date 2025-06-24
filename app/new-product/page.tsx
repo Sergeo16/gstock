@@ -114,14 +114,14 @@ const page = () => {
                 type="text"
                 name="name"
                 placeholder="Nom"
-                className='input input-bordered w-full'
+                className='input input-bordered focus:border-none focus:outline-accent w-full'
                 value={formData.name}
                 onChange={handleChange}
               />
               <textarea
                 name="description"
                 placeholder="Description"
-                className='textarea textarea-bordered w-full'
+                className='textarea textarea-bordered focus:border-none focus:outline-accent w-full'
                 value={formData.description}
                 onChange={handleChange}
               >
@@ -132,13 +132,13 @@ const page = () => {
                 type="number"
                 name="price"
                 placeholder="Prix"
-                className='input input-bordered w-full'
+                className='input input-bordered focus:border-none focus:outline-accent w-full'
                 value={formData.price}
                 onChange={handleChange}
               />
 
               <select
-                className='select select-bordered w-full'
+                className='select select-bordered focus:border-none focus:outline-accent w-full'
                 value={formData.categoryId}
                 onChange={handleChange}
                 name='categoryId'
@@ -150,7 +150,7 @@ const page = () => {
               </select>
 
               <select
-                className='select select-bordered w-full'
+                className='select select-bordered focus:border-none focus:outline-accent w-full'
                 value={formData.unit}
                 onChange={handleChange}
                 name='unit'
@@ -170,17 +170,17 @@ const page = () => {
                 type="file"
                 accept='image/*'
                 placeholder="Prix"
-                className='file-input file-input-bordered w-full'
+                className='file-input file-input-bordered focus:border-none focus:outline-accent w-full'
                 onChange={handleFileChange}
               />
 
-              <button onClick={handleSubmit} className='btn btn-primary'>
+              <button onClick={handleSubmit} className='btn bg-stone text-accent border-accent border-2 hover:border-3'>
                 Créer le produit
               </button>
 
             </div>
 
-            <div className='md:ml-4 md:w-[300px] mt-4 md:mt-0 border-2 border-primary md:h-[300px] p-5 flex justify-center items-center rounded-3xl'>
+            <div className='md:ml-4 md:w-[300px] mt-4 md:mt-0 border-2 border-accent md:h-[300px] p-5 flex justify-center items-center rounded-3xl'>
               {previewUrl && previewUrl !== "" ? (
                 <div>
                   <ProductImage
@@ -192,7 +192,7 @@ const page = () => {
                 </div>
               ) : (
                 <div className='wiggle-animation'>
-                  <FileImage strokeWidth={1} className='h-10 w-10 text-primary' />
+                  <FileImage strokeWidth={1} className='h-10 w-10 text-accent' />
                 </div>
               )}
             </div>

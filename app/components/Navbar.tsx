@@ -33,12 +33,11 @@ const Navbar = () => {
             {navLinks.map(({ href, label, icon: Icon }) => {
                 const isActive = pathname === href
                 const activeClass = isActive ? 'text-accent' : 'btn-ghost'
-                // const activeClass = isActive ? 'btn-accent text-white' : 'btn-ghost'
                 return (
                     <Link
                         href={href}
                         key={href}
-                        className={`${baseClass} ${activeClass} btn-sm flex gap-2 items-center`}
+                        className={`${baseClass} ${activeClass} btn-sm flex gap-2 items-center hover:bg-accent`}
                     >
                         <Icon className='w-4 h-4' />
                         {label}
@@ -47,7 +46,7 @@ const Navbar = () => {
 
             })}
 
-            <button className="btn btn-sm"
+            <button className="btn btn-sm hover:bg-accent"
                 onClick={() => (document.getElementById('my_modal_stock') as HTMLDialogElement).showModal()}>
                 <Warehouse className='w-4 h-4' />
                 Alimenter le stock
