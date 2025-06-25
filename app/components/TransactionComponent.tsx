@@ -11,7 +11,7 @@ const TransactionComponent = ({ tx }: { tx: Transaction }) => {
     });
 
     return (
-        <div className='p-4 border-2 border-base-200 rounded-3xl flex items-center w-full'>
+        <div className='p-4 border-2 border-accent rounded-3xl flex items-center w-full'>
             <div>
                 {tx.imageUrl && (
                     <ProductImage
@@ -32,7 +32,7 @@ const TransactionComponent = ({ tx }: { tx: Transaction }) => {
                         <div>
                             {tx.type == "IN" ? (
                                 <div>
-                                    <span className='text-success font-bold text-xl capitalize'>
+                                    <span className='text-accent font-bold text-xl capitalize'>
                                         +{tx.quantity} {tx.unit}
                                     </span>
                                 </div>

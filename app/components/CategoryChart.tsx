@@ -8,7 +8,8 @@ const CategoryChart = ({ email }: { email: string }) => {
   const [data, setData] = useState<ChartData[]>([])
 
   const COLORS = {
-    default: "#F1D2BF"
+    default: "#37cdbe"
+    // default: "#F1D2BF"
   }
 
   const fetchStats = async () => {
@@ -49,7 +50,7 @@ const CategoryChart = ({ email }: { email: string }) => {
           tick={
             {
               fontSize: 15,
-              fill: "#793205",
+              fill: "white",
               fontWeight: "bold"
             }
           }
@@ -58,13 +59,13 @@ const CategoryChart = ({ email }: { email: string }) => {
         <Bar
           dataKey="value"
           radius={[8, 8, 0, 0]}
-        // barSize={200}
+          barSize={30}
         >
 
           <LabelList
-            fill="#793205"
+            fill="black"
             dataKey="value"
-            position="insideRight"
+            position="insideCenter"
             style={{ fontSize: "20px", fontWeight: 'bold' }}
           />
           {data.map((entry, index) => (
@@ -81,7 +82,7 @@ const CategoryChart = ({ email }: { email: string }) => {
 
   if (data.length == 0) {
     return (
-      <div className='w-full border-2 border-base-200 mt-4 p-4 rounded-3xl'>
+      <div className='w-full border-2 border-accent mt-4 p-4 rounded-3xl'>
         <h2 className='text-xl font-bold mb-4'>
           5 catégories avec le plus de produits
         </h2>
@@ -94,9 +95,9 @@ const CategoryChart = ({ email }: { email: string }) => {
   }
 
   return (
-    <div className='w-full border-2 border-base-200 mt-4 p-4 rounded-3xl'>
-      <h2 className='text-xl font-bold mb-4'>
-        5 catégories avec le plus de produits
+    <div className='w-full border-2 border-accent mt-4 p-4 rounded-3xl'>
+      <h2 className='text-xl text-center font-bold mb-4'>
+        Le top 5 des catégories de produits
       </h2>
       {renderChart()}
     </div>

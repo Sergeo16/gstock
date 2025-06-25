@@ -27,7 +27,7 @@ const RecentTransactions = ({ email }: { email: string }) => {
     }, [email])
 
     return (
-        <div className='w-full border-2 border-base-200 mt-4 p-4 rounded-3xl'>
+        <div className='w-full border-2 border-accent mt-4 p-4 rounded-3xl'>
             {transactions.length == 0 ? (
                 <EmptyState
                     message='Aucune Transaction pour le moment'

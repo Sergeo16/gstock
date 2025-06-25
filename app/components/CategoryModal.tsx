@@ -32,18 +32,18 @@ const CategoryModal: React.FC<Props> = ({
                     placeholder='Nom'
                     value={name}
                     onChange={(e) => onChangeName(e.target.value)}
-                    className='input input-bordered w-full mb-4'
+                    className='input input-bordered mb-4 focus:border-none focus:outline-accent w-full'
                 />
                 <input
                     type="text"
                     placeholder='Description'
                     value={description}
                     onChange={(e) => onChangeDescription(e.target.value)}
-                    className='input input-bordered w-full mb-4'
+                    className='input input-bordered mb-4 focus:border-none focus:outline-accent w-full'
                 />
 
                 <button
-                    className='btn btn-primary'
+                    className='btn bg-stone text-accent border-accent border-2 hover:border-3'
                     onClick={onSubmit}
                     disabled={loading}
                 >

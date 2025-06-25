@@ -36,42 +36,42 @@ const ProductOverview = ({ email }: { email: string }) => {
             {stats ? (
                 <div className='grid grid-cols-2 gap-4'>
 
-                    <div className='border-2 p-4 border-base-200 rounded-3xl'>
+                    <div className='border-2 p-4 border-accent rounded-3xl'>
                         <p className='stat-title'>Produits en stock</p>
                         <div className='flex justify-between items-center'>
                             <div className='stat-value'>{stats.totalProducts}</div>
-                            <div className='bg-primary/25 p-3 rounded-full'>
-                                <Box className='w-5 h-5 text-primary text-3xl' />
+                            <div className='bg-accent/25 p-3 rounded-full'>
+                                <Box className='w-5 h-5 text-accent text-3xl' />
                             </div>
                         </div>
                     </div>
 
-                    <div className='border-2 p-4 border-base-200 rounded-3xl'>
+                    <div className='border-2 p-4 border-accent rounded-3xl'>
                         <p className='stat-title'>Nombre de catégories</p>
                         <div className='flex justify-between items-center'>
                             <div className='stat-value'>{stats.totalCategories}</div>
-                            <div className='bg-primary/25 p-3 rounded-full'>
-                                <Tag className='w-5 h-5 text-primary text-3xl' />
+                            <div className='bg-accent/25 p-3 rounded-full'>
+                                <Tag className='w-5 h-5 text-accent text-3xl' />
                             </div>
                         </div>
                     </div>
 
-                    <div className='border-2 p-4 border-base-200 rounded-3xl'>
+                    <div className='border-2 p-4 border-accent rounded-3xl'>
                         <p className='stat-title'>Valeur totale du stock</p>
                         <div className='flex justify-between items-center'>
                             <div className='stat-value'>{formatNumber (stats.stockValue)} €</div>
-                            <div className='bg-primary/25 p-3 rounded-full'>
-                                <DollarSign className='w-5 h-5 text-primary text-3xl' />
+                            <div className='bg-accent/25 p-3 rounded-full'>
+                                <DollarSign className='w-5 h-5 text-accent text-3xl' />
                             </div>
                         </div>
                     </div>
 
-                    <div className='border-2 p-4 border-base-200 rounded-3xl'>
+                    <div className='border-2 p-4 border-accent rounded-3xl'>
                         <p className='stat-title'>Total des transactions</p>
                         <div className='flex justify-between items-center'>
                             <div className='stat-value'>{stats.totalTransactions}</div>
-                            <div className='bg-primary/25 p-3 rounded-full'>
-                                <ShoppingCart className='w-5 h-5 text-primary text-3xl' />
+                            <div className='bg-accent/25 p-3 rounded-full'>
+                                <ShoppingCart className='w-5 h-5 text-accent text-3xl' />
                             </div>
                         </div>
                     </div>
