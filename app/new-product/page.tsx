@@ -10,6 +10,7 @@ import ProductImage from '../components/ProductImage'
 import { toast } from 'react-toastify'
 import { useRouter } from 'next/navigation'
 
+// Page de création de produit
 const page = () => {
 
   const { user } = useUser()
@@ -28,6 +29,7 @@ const page = () => {
     imageUrl: ""
 
   })
+    // Gère le changement des champs du formulaire
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target
     setFormData({ ...formData, [name]: value })
@@ -49,6 +51,7 @@ const page = () => {
   }, [email])
 
 
+    // Gère le changement de fichier image
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFile = e.target.files?.[0] || null
     setFile(selectedFile)
@@ -56,6 +59,7 @@ const page = () => {
       setPreviewUrl(URL.createObjectURL(selectedFile))
     }
   }
+    // Soumet le formulaire de création de produit
   const handleSubmit = async () => {
     // Vérifie les champs du formulaire
     if (!formData.name || !formData.description || !formData.price || !formData.categoryId || !formData.unit) {

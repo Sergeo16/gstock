@@ -1,9 +1,10 @@
 "use server"
 
-import prisma from "@/lib/prisma"
-import { FormDataType, OrderItem, Product, ProductOverviewStats, StockSummary, Transaction } from "@/type"
-import { Category } from "@prisma/client"
+import prisma from "@/lib/prisma";
+import { FormDataType, OrderItem, Product, ProductOverviewStats, StockSummary, Transaction } from "@/type";
+import { Category } from "@prisma/client";
 
+// Ajoute une association si elle n'existe pas déjà
 export async function checkAndAddAssociation(email: string, name: string) {
     if (!email) return
     try {
@@ -25,6 +26,7 @@ export async function checkAndAddAssociation(email: string, name: string) {
     }
 }
 
+// Récupère une association par email
 export async function getAssociation(email: string) {
     if (!email) return
     try {
@@ -39,6 +41,7 @@ export async function getAssociation(email: string) {
     }
 }
 
+// Crée une nouvelle catégorie
 export async function createCategory(
     name: string,
     email: string,
@@ -65,6 +68,7 @@ export async function createCategory(
     }
 }
 
+// Met à jour une catégorie
 export async function updateCategory(
     id: string,
     email: string,
@@ -98,6 +102,7 @@ export async function updateCategory(
     }
 }
 
+// Supprime une catégorie
 export async function deleteCategory(id: string, email: string) {
     if (!id || !email) {
         throw new Error("L'id, l'email de l'association et sont requis.")
@@ -120,6 +125,7 @@ export async function deleteCategory(id: string, email: string) {
     }
 }
 
+// Récupère toutes les catégories d'une association
 export async function readCategories(email: string): Promise<Category[] | undefined> {
     if (!email) {
         throw new Error("l'email de l'association est  requis")
@@ -142,6 +148,7 @@ export async function readCategories(email: string): Promise<Category[] | undefi
     }
 }
 
+// Crée un produit
 export async function createProduct(formData: FormDataType, email: string) {
     try {
         const { name, description, price, imageUrl, categoryId, unit } = formData;
@@ -173,6 +180,7 @@ export async function createProduct(formData: FormDataType, email: string) {
     }
 }
 
+// Met à jour un produit
 export async function updateProduct(formData: FormDataType, email: string) {
     try {
         const { id, name, description, price, imageUrl } = formData;
@@ -203,6 +211,7 @@ export async function updateProduct(formData: FormDataType, email: string) {
     }
 }
 
+// Supprime un produit
 export async function deleteProduct(id: string, email: string) {
     try {
         if (!id) {
@@ -225,6 +234,7 @@ export async function deleteProduct(id: string, email: string) {
     }
 }
 
+// Récupère tous les produits d'une association
 export async function readProducts(email: string): Promise<Product[] | undefined> {
     try {
         if (!email) {
@@ -255,6 +265,7 @@ export async function readProducts(email: string): Promise<Product[] | undefined
     }
 }
 
+// Récupère un produit par son ID
 export async function readProductById(productId: string, email: string): Promise<Product | undefined> {
     try {
         if (!email) {
@@ -288,6 +299,7 @@ export async function readProductById(productId: string, email: string): Promise
     }
 }
 
+// Réapprovisionne le stock d'un produit et crée une transaction
 export async function replenishStockWithTransaction(productId: string, quantity: number, email: string) {
     try {
 
@@ -330,6 +342,7 @@ export async function replenishStockWithTransaction(productId: string, quantity:
     }
 }
 
+// Déduit le stock pour une commande et crée une transaction
 export async function deductStockWithTransaction(orderItems: OrderItem[], email: string) {
     try {
 
@@ -392,6 +405,7 @@ export async function deductStockWithTransaction(orderItems: OrderItem[], email:
     }
 }
 
+// Récupère les transactions d'une association
 export async function getTransactions(email: string, limit?: number): Promise<Transaction[]> {
     try {
         if (!email) {
@@ -434,6 +448,7 @@ export async function getTransactions(email: string, limit?: number): Promise<Tr
     }
 }
 
+// Récupère les statistiques d'ensemble des produits
 export async function getProductOverviewStats(email: string): Promise<ProductOverviewStats> {
     try {
         if (!email) {
@@ -492,6 +507,7 @@ export async function getProductOverviewStats(email: string): Promise<ProductOve
     }
 }
 
+// Récupère la distribution des produits par catégorie
 export async function getProductCategoryDistribution(email: string) {
     try {
         if (!email) {
@@ -535,6 +551,7 @@ export async function getProductCategoryDistribution(email: string) {
     }
 }
 
+// Récupère un résumé du stock
 export async function getStockSummary(email: string): Promise<StockSummary> {
     try {
         if (!email) {
@@ -557,7 +574,8 @@ export async function getStockSummary(email: string): Promise<StockSummary> {
         })
 
         const inStock = allProducts.filter((p) => p.quantity > 5)
-        const lowStock = allProducts.filter((p) => p.quantity > 0 && p.quantity <= 0)
+        const lowStock = allProducts.filter((p) => p.quantity > 0 && p.quantity <= 5)
+
         const outOfStock = allProducts.filter((p) => p.quantity === 0)
         const criticalProducts = [...lowStock, ...outOfStock]
         return {

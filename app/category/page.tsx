@@ -9,6 +9,7 @@ import { Category } from '@prisma/client'
 import EmptyState from '../components/EmptyState'
 import { Pencil, Trash } from 'lucide-react'
 
+// Page de gestion des catégories
 const page = () => {
   const { user } = useUser()
   const email = user?.primaryEmailAddress?.emailAddress as string
@@ -20,6 +21,7 @@ const page = () => {
   const [editingCategoryId, setEditingCategoryId] = useState<string | null>(null)
   const [categories, setCategories] = useState<Category[]>([])
 
+    // Charge les catégories depuis l'API
   const loadCategories = async () => {
     if (email) {
       const data = await readCategories(email)
@@ -31,6 +33,7 @@ const page = () => {
     loadCategories()
   }, [email])
 
+    // Ouvre la modale de création
   const openCreateModal = () => {
     setName("");
     setDescription("");
@@ -38,6 +41,7 @@ const page = () => {
     (document.getElementById("category_modal") as HTMLDialogElement)?.showModal()
   }
 
+    // Ferme la modale
   const closeModal = () => {
     setName("");
     setDescription("");
@@ -45,6 +49,7 @@ const page = () => {
     (document.getElementById("category_modal") as HTMLDialogElement)?.close()
   }
 
+    // Crée une nouvelle catégorie
   const handleCreateCategory = async () => {
     setLoading(true)
     if (email) {
@@ -56,6 +61,7 @@ const page = () => {
     toast.success("Catégorie créée avec succès.")
   }
 
+    // Met à jour une catégorie existante
   const handleUpdateCategory = async () => {
     if (!editingCategoryId) return
     setLoading(true)
@@ -68,6 +74,7 @@ const page = () => {
     toast.success("Catégorie mise à jour avec succès.")
   }
 
+    // Ouvre la modale d'édition
   const openEditModal = (category: Category) => {
     setName(category.name);
     setDescription(category.description || " ");
@@ -77,6 +84,7 @@ const page = () => {
   }
 
 
+    // Supprime une catégorie
   const handleDeleteCategory = async (categoryId: string) => {
     const confirmDelete = confirm("Voulez-vous vraiment supprimer cette catégorie ? Tous les produits associés seront également supprimés")
     if (!confirmDelete) return;

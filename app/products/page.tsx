@@ -10,11 +10,13 @@ import Link from 'next/link'
 import { Pencil, Trash } from 'lucide-react'
 import { toast } from 'react-toastify'
 
+// Page de gestion des produits
 const page = () => {
     const { user } = useUser()
     const email = user?.primaryEmailAddress?.emailAddress as string
     const [products, setProducts] = useState<Product[]>([])
 
+        // Charge les produits depuis l'API
     const fetchProducts = async () => {
         try {
             if (email) {
@@ -33,6 +35,7 @@ const page = () => {
             fetchProducts()
     }, [email])
 
+        // Supprime un produit (et son image)
     const handleDeleteProduct = async (product: Product) => {
         const confirmDelete = confirm("Voulez-vous vraiment supprimer ce produit ?")
         if (!confirmDelete) return;

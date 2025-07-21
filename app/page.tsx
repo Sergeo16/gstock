@@ -7,6 +7,7 @@ import RecentTransactions from "./components/RecentTransactions";
 import StockSummaryTable from "./components/StockSummaryTable";
 
 
+// Page d'accueil du dashboard
 export default function Home() {
 
   const { user } = useUser()

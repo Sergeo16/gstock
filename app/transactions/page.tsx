@@ -10,6 +10,7 @@ import { RotateCcw } from 'lucide-react'
 
 const ITEMS_PER_PAGE = 5
 
+// Page des transactions
 const page = () => {
 
     const { user } = useUser()
@@ -22,6 +23,7 @@ const page = () => {
     const [filteredTransactions, setFilteredTransactions] = useState<Transaction[]>([])
     const [currentPage, setCurrentPage] = useState<number>(1)
 
+        // Charge les produits et transactions
     const fetchData = async () => {
         try {
             if (email) {
@@ -61,6 +63,7 @@ const page = () => {
         setCurrentPage(1)
     }, [selectedProduct, dateFrom, dateTo, transactions])
 
+        // Pagination
     const totalPages = Math.ceil(filteredTransactions.length / ITEMS_PER_PAGE)
     const startIndex = (currentPage - 1) * ITEMS_PER_PAGE
     const currentTransactions = filteredTransactions.slice(startIndex, startIndex + ITEMS_PER_PAGE)

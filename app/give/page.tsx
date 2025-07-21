@@ -12,6 +12,7 @@ import ProductImage from '../components/ProductImage'
 import { Trash } from 'lucide-react'
 import { toast } from 'react-toastify'
 
+// Page de gestion des dons
 const page = () => {
 
     const { user } = useUser()
@@ -22,6 +23,7 @@ const page = () => {
     const [selectedProductIds, setSelectedProductIds] = useState<string[]>([])
 
 
+        // Charge les produits disponibles
     const fetchProducts = async () => {
         try {
             if (email) {
@@ -47,6 +49,7 @@ const page = () => {
         .filter((product) => !selectedProductIds.includes(product.id))
         .slice(0, 10)
 
+        // Ajoute un produit au panier
     const handleAddToCart = (product: Product) => {
         setOrder((prevOrder) => {
             const existingProduct = prevOrder.find((item) => item.productId === product.id)
@@ -83,6 +86,7 @@ const page = () => {
         })
     }
 
+        // Modifie la quantité d'un produit dans le panier
     const handleQuantityChange = (productId: string, quantity: number) => {
         setOrder((prevOrder) =>
             prevOrder.map((item) =>
@@ -91,6 +95,7 @@ const page = () => {
         )
     }
 
+        // Retire un produit du panier
     const handleRemoveFromCart = (productId: string) => {
         setOrder((prevOrder) => {
             const updatedOrder = prevOrder.filter((item) => item.productId !== productId)
@@ -102,6 +107,7 @@ const page = () => {
     }
 
 
+        // Soumet la commande de don
     const handleSubmit = async () => {
         try {
             if (order.length == 0) {
@@ -153,7 +159,7 @@ const page = () => {
                         )}
                     </div>
                 </div>
-                <div className='md:w-2/3 p-4 md:ml-4 mb-4 md:mb-0 h-fit border-2 border-base-200 rounded-3xl overflow-x-auto'>
+                <div className='md:w-2/3 p-4 md:ml-4 mb-4 md:mb-0 h-fit border-2 border-accent rounded-3xl overflow-x-auto'>
                     {order.length > 0 ? (
                         <>
                             <table className='table w-full scroll-auto'>

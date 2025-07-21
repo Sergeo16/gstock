@@ -9,6 +9,7 @@ import { useRouter } from 'next/navigation'
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
 
+// Page de mise à jour d'un produit
 const page = ({ params }: { params: Promise<{ productId: string }> }) => {
 
 
@@ -27,6 +28,7 @@ const page = ({ params }: { params: Promise<{ productId: string }> }) => {
     })
     const router = useRouter()
 
+        // Charge le produit à éditer
     const fetchProduct = async () => {
         try {
             const { productId } = await params
@@ -54,11 +56,13 @@ const page = ({ params }: { params: Promise<{ productId: string }> }) => {
     }, [email])
 
 
+        // Gère le changement des champs du formulaire
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target
         setFormData({ ...formData, [name]: value })
     }
 
+        // Gère le changement de fichier image
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0] || null
         setFile(selectedFile)
@@ -67,6 +71,7 @@ const page = ({ params }: { params: Promise<{ productId: string }> }) => {
         }
     }
 
+        // Soumet le formulaire de mise à jour
     const handleSubmit = async (e: React.FormEvent) => {
 
         let imageUrl = formData?.imageUrl
